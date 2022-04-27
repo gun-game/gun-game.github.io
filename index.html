@@ -22,12 +22,12 @@ p {
 <button onClick="generateGun(parseInt(gunInput.amount.value))">Generate</button>
 
 <form id="gunInput">
-<input type="number" id="amount" name="guninp" value=0><br>
+<input type="number" id="amount" name="guninp" value=1 min=1 max=100><br>
 </form>
 
 
 <div class="inventory"> 
-     <p>test</p>
+     <p></p>
  </div> 
  
  
@@ -48,13 +48,22 @@ var guns = [];
 
 var gunaddon = [];
 
+var gunaddonqt = [];
+
+
 function generateGun(tier) {
-	for (var i = 0; i < tier; i++) {
+	for (var i = 1; i < tier; i++) {
 	const random = Math.floor(Math.random() * upgrades.length);
-	if (i > 0) {
-	gunaddon.push(" " + upgrades[random])
+	thingy = upgrades[random]
+	if (i > 1) {
+		if (gunaddon.includes(" " + thingy)) {
+		thingynumber = gunaddon.indexOf(" " + thingy)
+		gunaddon[thingynumber] = gunaddon[thingynumber] + " x2"
+		} else {
+		gunaddon.push(" " + upgrades[random])
+		}
 	} else {
-	gunaddon.push(upgrades[random])
+		gunaddon.push(upgrades[random])
 	}
   }
   const random = Math.floor(Math.random() * guntypes.length);
