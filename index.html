@@ -1,0 +1,76 @@
+<head>
+<title>Game</title>
+</head>
+
+<style>
+body {
+	background-color: black;
+}
+
+p {
+	color: white;
+}
+
+.inventory {
+
+}
+
+</style>
+
+<body>
+
+<button onClick="generateGun(parseInt(gunInput.amount.value))">Generate</button>
+
+<form id="gunInput">
+<input type="number" id="amount" name="guninp" value=0><br>
+</form>
+
+
+<div class="inventory"> 
+     <p>test</p>
+ </div> 
+ 
+ 
+</body>
+
+<script>
+var mousePosition;
+
+var guntypes = [
+	"Peashooter", "Pistol", "Revolver", "SMG", "Pump Shotgun", "Assault Rifle", "Assault Shotgun", "Minigun", "Double-Barrel Shotgun", "Sniper"
+];
+
+var upgrades = [
+	"Explosive", "Plasma", "Piercing", "Powerful", "Flaming", "Shocking", "Freezing", "Void", "Instant-Kill", "Quick-Fire", "Corrosive", "Bottomless-Clip", "Life-Stealing", "Kill-Clip"
+];
+
+var guns = [];
+
+var gunaddon = [];
+
+function generateGun(tier) {
+	for (var i = 0; i < tier; i++) {
+	const random = Math.floor(Math.random() * upgrades.length);
+	if (i > 0) {
+	gunaddon.push(" " + upgrades[random])
+	} else {
+	gunaddon.push(upgrades[random])
+	}
+  }
+  const random = Math.floor(Math.random() * guntypes.length);
+  if (gunaddon.length != 0) {
+	guns.unshift(gunaddon + " " + guntypes[random])
+  } else {
+  gunaddon.push("Standard-Issue")
+  guns.unshift(gunaddon + " " + guntypes[random])
+  }
+  gunaddon.length = 0;
+	alert(`${guns[0]}`)
+  }
+
+
+
+
+
+
+</script>
